@@ -9,9 +9,30 @@
     <%= f.input :password_confirmation, :required => true %>
   </div>
 
+  <% if params[:type].present? && params[:type] == User::ROLE_MANAGER %>
+		<h2>Your Association</h2>
+		<div class="form-inputs">
+	  	<%= f.simple_fields_for :organization_attributes  do |organization| %>
+  	  <%= organization.input :name, :required => true %>
+  	  <%= organization.text_area :description, :required => true %>
+		  <%= organization.input :contact_name, :required => true %>
+			<%= organization.input :contact_job, :required => true %>
+			<%= organization.input :street_number, :required => true %>
+			<%= organization.input :street_name, :required => true %>
+			<%= organization.input :city, :required => true %>
+			<%= organization.input :postal_code, :required => true %>
+			<%= organization.input :department, :required => true %>
+			<%= organization.input :phone, :required => true %>
+			<%= organization.input :fax, :required => true %>
+			<% end %>
+		</div>
+	<% end %>
+
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
+
+
 <% end %>
 
 <%= render "devise/shared/links" %>
