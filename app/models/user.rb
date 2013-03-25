@@ -17,7 +17,19 @@ class User < ActiveRecord::Base
   
   has_many :donations
   
-  TYPE_ADMIN   = 'admin'
-  TYPE_MANAGER = 'manager'
-  TYPE_DONOR   = 'donor'
+  ROLE_ADMIN   = 'admin'
+  ROLE_MANAGER = 'manager'
+  ROLE_DONOR   = 'donor'
+  
+  def admin?
+    self.role == ROLE_ADMIN
+  end
+  
+  def manager?
+    self.role == ROLE_MANAGER
+  end
+  
+  def donor?
+    self.role == ROLE_DONOR
+  end
 end
