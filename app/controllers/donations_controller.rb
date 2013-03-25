@@ -24,7 +24,7 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.json
   def new
-    @donation = Donation.new
+    @donation = current_user.donations.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +40,7 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.json
   def create
-    @donation = Donation.new(params[:donation])
+    @donation = current_user.donations.new(params[:donation])
 
     respond_to do |format|
       if @donation.save

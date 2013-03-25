@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :organization
-  belongs_to :donation
   belongs_to :history
   belongs_to :cart
 
