@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :phone, :type
+ 
   
   belongs_to :organization
   belongs_to :donation
@@ -15,4 +16,8 @@ class User < ActiveRecord::Base
   belongs_to :cart
   
   has_many :donations
+  
+  TYPE_ADMIN   = 'admin'
+  TYPE_MANAGER = 'manager'
+  TYPE_DONOR   = 'donor'
 end
