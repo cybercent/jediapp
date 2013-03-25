@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325120157) do
+ActiveRecord::Schema.define(:version => 20130325142130) do
+
+  create_table "assets", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "carts", :force => true do |t|
     t.integer  "user_id"
@@ -67,8 +77,9 @@ ActiveRecord::Schema.define(:version => 20130325120157) do
     t.string   "contact_email"
     t.string   "contact_fax"
     t.integer  "organization_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.string   "aasm_state",      :default => "online"
   end
 
   create_table "users", :force => true do |t|
